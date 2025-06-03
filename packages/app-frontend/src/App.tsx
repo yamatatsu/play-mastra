@@ -1,12 +1,20 @@
+"use client";
+
+import { Thread } from "@/components/assistant-ui/thread";
+import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { useChatRuntime } from "@assistant-ui/react-ai-sdk";
+
 function App() {
+	const runtime = useChatRuntime({
+		api: "http://localhost:4111/api/agents/weatherAgent/stream",
+	});
+
 	return (
-		<div className="flex min-h-screen items-center justify-center bg-gray-100">
-			<div className="rounded-lg bg-white p-8 shadow-md">
-				<h1 className="text-center font-bold text-4xl text-gray-800">
-					Hello World!!
-				</h1>
-			</div>
-		</div>
+		<AssistantRuntimeProvider runtime={runtime}>
+			<main className="h-screen w-screen">
+				<Thread />
+			</main>
+		</AssistantRuntimeProvider>
 	);
 }
 

@@ -10,12 +10,18 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
+		"@assistant-ui/react": "^0.10.20",
+		"@assistant-ui/react-ai-sdk": "^0.10.13",
+		"@assistant-ui/react-markdown": "^0.10.4",
+		"@assistant-ui/styles": "^0.1.11",
 		"@radix-ui/react-slot": "^1.1.0",
+		"@radix-ui/react-tooltip": "^1.2.7",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"lucide-react": "^0.460.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"remark-gfm": "^4.0.1",
 		"tailwind-merge": "^2.5.4"
 	},
 	"devDependencies": {
