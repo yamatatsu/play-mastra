@@ -1,5 +1,6 @@
 import { Mastra } from "@mastra/core";
-import { LibSQLStore } from "@mastra/libsql";
+// @ts-expect-error mastraのリポジトリにバグが報告されている。https://github.com/mastra-ai/mastra/issues/4593
+import { DynamoDBStore } from "@mastra/dynamodb";
 import { PinoLogger } from "@mastra/loggers";
 import { grafanaAgent } from "./agents/grafana-agent";
 import { weatherAgent } from "./agents/weather-agent";
@@ -16,9 +17,12 @@ export const mastra = new Mastra({
 	},
 	workflows: { weatherWorkflow },
 	agents: { weatherAgent, grafanaAgent },
-	storage: new LibSQLStore({
-		// stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
-		url: ":memory:",
+	storage: new DynamoDBStore({
+		name: "dynamodb",
+		config: {
+			tableName: "mastra-storage-table",
+			region: "ap-northeast-1",
+		},
 	}),
 	logger: new PinoLogger({
 		name: "Mastra",

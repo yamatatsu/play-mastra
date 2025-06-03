@@ -1,4 +1,4 @@
 - [x] MCP
-- [ ] Cognito
-- [ ] DynamoDB Storage
+- [x] Cognito
+- [x] DynamoDB Storage
 - [ ] host on Lambda
