@@ -7,13 +7,6 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"nursery": {
-				"useSortedClasses": {
-					"level": "error",
-					"fix": "safe",
-					"options": {}
-				}
-			},
 			"suspicious": {
 				"noConsole": {
 					"level": "error"

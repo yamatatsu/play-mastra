@@ -18,6 +18,9 @@
 		"@mastra/libsql": "^0.10.0",
 		"@mastra/loggers": "^0.10.0",
 		"@mastra/mcp": "^0.10.1",
+		"aws-jwt-verify": "^5.1.0",
+		"hono": "^4.7.11",
+		"pino": "^9.7.0",
 		"zod": "^3.25.49"
 	}
 }
