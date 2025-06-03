@@ -1,13 +1,11 @@
 "use client";
 
 import { Thread } from "@/components/assistant-ui/thread";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/react-ai-sdk";
+import { MastraChatModelAdapter } from "@/lib/mastra-runtime";
+import { AssistantRuntimeProvider, useLocalRuntime } from "@assistant-ui/react";
 
 function App() {
-	const runtime = useChatRuntime({
-		api: "http://localhost:4111/api/agents/weatherAgent/stream",
-	});
+	const runtime = useLocalRuntime(MastraChatModelAdapter);
 
 	return (
 		<AssistantRuntimeProvider runtime={runtime}>
