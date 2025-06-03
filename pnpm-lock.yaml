@@ -29,6 +29,9 @@ importers:
       '@mastra/loggers':
         specifier: ^0.10.0
         version: 0.10.0(@mastra/core@0.10.1(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.49))
+      '@mastra/mcp':
+        specifier: ^0.10.1
+        version: 0.10.1(@mastra/core@0.10.1(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.49))(zod@3.25.49)
       zod:
         specifier: ^3.25.49
         version: 3.25.49

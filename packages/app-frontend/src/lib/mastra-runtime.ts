@@ -10,8 +10,8 @@ const mastraClient = new MastraClient({
 export const MastraChatModelAdapter: ChatModelAdapter = {
 	async *run({ messages, abortSignal }) {
 		try {
-			// MastraのweatherAgentを取得
-			const agent = mastraClient.getAgent("weatherAgent");
+			// MastraのgrafanaAgentを取得
+			const agent = mastraClient.getAgent("grafanaAgent");
 
 			// メッセージを適切な形式に変換
 			const mastraMessages = messages.map((message) => ({

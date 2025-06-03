@@ -74,7 +74,7 @@ const ThreadWelcome: FC = () => {
 			<div className="aui-thread-welcome-root">
 				<div className="aui-thread-welcome-center">
 					<p className="aui-thread-welcome-message">
-						How can I help you today?
+						Grafanaのダッシュボードを操作するためのアシスタントです。
 					</p>
 				</div>
 				<ThreadWelcomeSuggestions />
@@ -88,22 +88,22 @@ const ThreadWelcomeSuggestions: FC = () => {
 		<div className="aui-thread-welcome-suggestions">
 			<ThreadPrimitive.Suggestion
 				className="aui-thread-welcome-suggestion"
-				prompt="What is the weather in Tokyo?"
+				prompt="どんなダッシュボードがありますか？"
 				method="replace"
 				autoSend
 			>
 				<span className="aui-thread-welcome-suggestion-text">
-					What is the weather in Tokyo?
+					どんなダッシュボードがありますか？
 				</span>
 			</ThreadPrimitive.Suggestion>
 			<ThreadPrimitive.Suggestion
 				className="aui-thread-welcome-suggestion"
-				prompt="What is assistant-ui?"
+				prompt="どんなデータソースがありますか？"
 				method="replace"
 				autoSend
 			>
 				<span className="aui-thread-welcome-suggestion-text">
-					What is assistant-ui?
+					どんなデータソースがありますか？
 				</span>
 			</ThreadPrimitive.Suggestion>
 		</div>
@@ -116,7 +116,7 @@ const Composer: FC = () => {
 			<ComposerPrimitive.Input
 				rows={1}
 				autoFocus
-				placeholder="Write a message..."
+				placeholder="メッセージを入力してください..."
 				className="aui-composer-input"
 			/>
 			<ComposerAction />
@@ -130,7 +130,7 @@ const ComposerAction: FC = () => {
 			<ThreadPrimitive.If running={false}>
 				<ComposerPrimitive.Send asChild>
 					<TooltipIconButton
-						tooltip="Send"
+						tooltip="送信"
 						variant="default"
 						className="aui-composer-send"
 					>
@@ -141,7 +141,7 @@ const ComposerAction: FC = () => {
 			<ThreadPrimitive.If running>
 				<ComposerPrimitive.Cancel asChild>
 					<TooltipIconButton
-						tooltip="Cancel"
+						tooltip="キャンセル"
 						variant="default"
 						className="aui-composer-cancel"
 					>
