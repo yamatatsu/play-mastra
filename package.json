@@ -1,0 +1,14 @@
+{
+	"name": "play-mastra",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"typescript": "^5.8.2"
+	},
+	"engines": {
+		"node": "^24.x.x",
+		"pnpm": "^10.x.x"
+	}
+}

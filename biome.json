@@ -1,0 +1,30 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"nursery": {
+				"useSortedClasses": {
+					"level": "error",
+					"fix": "safe",
+					"options": {}
+				}
+			},
+			"suspicious": {
+				"noConsole": {
+					"level": "error"
+				}
+			}
+		}
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"files": {
+		"ignore": ["dist", "cdk.out"]
+	}
+}

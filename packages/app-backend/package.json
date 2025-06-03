@@ -1,0 +1,22 @@
+{
+	"name": "app-backend",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"dev": "mastra dev",
+		"build": "mastra build"
+	},
+	"devDependencies": {
+		"@types/node": "22.14.1",
+		"mastra": "^0.10.1",
+		"tsx": "^4.19.4",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"@ai-sdk/amazon-bedrock": "^2.2.9",
+		"@mastra/core": "^0.10.1",
+		"@mastra/libsql": "^0.10.0",
+		"@mastra/loggers": "^0.10.0",
+		"zod": "^3.25.49"
+	}
+}
