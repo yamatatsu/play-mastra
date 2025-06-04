@@ -38,4 +38,4 @@ jobs:
           role-to-assume: "arn:aws:iam::660782280015:role/play-mastra-github-deploy-role"
           aws-region: ap-northeast-1
 
-      - run: pnpm -F cdk exec cdk deploy
+      - run: pnpm -F cdk exec cdk deploy --all --require-approval=never
