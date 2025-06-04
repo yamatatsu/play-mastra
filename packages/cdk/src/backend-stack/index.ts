@@ -7,7 +7,9 @@ import * as iam from "aws-cdk-lib/aws-iam";
 import * as ssm from "aws-cdk-lib/aws-ssm";
 import type { Construct } from "constructs";
 
-export interface Props extends cdk.StackProps {}
+export interface Props extends cdk.StackProps {
+	frontendOrigin: string;
+}
 
 export class BackendStack extends cdk.Stack {
 	constructor(scope: Construct, id: string, props: Props) {
@@ -88,7 +90,7 @@ export class BackendStack extends cdk.Stack {
 				imageConfiguration: {
 					port: 4111,
 					environmentVariables: {
-						CORS_ORIGIN: "http://localhost:5173,http://localhost:5174",
+						CORS_ORIGIN: `http://localhost:5173,http://localhost:5174,${props.frontendOrigin}`,
 						AWS_USER_POOLS_ID: userPool.userPoolId,
 						AWS_USER_POOLS_WEB_CLIENT_ID: userPoolClient.userPoolClientId,
 						GRAFANA_MCP_PATH:
