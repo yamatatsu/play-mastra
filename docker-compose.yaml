@@ -1,0 +1,17 @@
+services:
+  mastra:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4111:4111
+    environment:
+      GRAFANA_API_KEY: ${GRAFANA_API_KEY}
+      GRAFANA_MCP_PATH: /prod/packages/app-backend/grafana-mcp/linux-arm
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      AWS_USER_POOLS_ID: ${AWS_USER_POOLS_ID}
+      AWS_USER_POOLS_WEB_CLIENT_ID: ${AWS_USER_POOLS_WEB_CLIENT_ID}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN}
+      AWS_REGION: ${AWS_REGION}

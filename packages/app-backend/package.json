@@ -4,7 +4,8 @@
 	"description": "",
 	"scripts": {
 		"dev": "mastra dev",
-		"build": "mastra build"
+		"build": "mastra build",
+		"start": "node .mastra/output/index.mjs"
 	},
 	"devDependencies": {
 		"@types/node": "22.14.1",

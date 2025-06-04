@@ -1,0 +1,14 @@
+.git
+.gitignore
+.vscode/*
+.cspellcache
+.env
+
+node_modules
+dist
+
+packages/cdk
+packages/*/.env
+packages/*/.mastra
+packages/*/node_modules
+packages/*/dist

@@ -11,7 +11,6 @@ export const mastra = new Mastra({
 	server: {
 		middleware: [bearerAuth],
 		cors: {
-			// TODO: 環境変数で差し替えれるようにする
 			origin: process.env.CORS_ORIGIN?.split(",") ?? "No origin permitted",
 		},
 	},

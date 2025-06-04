@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const mcpClient = new MCPClient({
 	servers: {
 		grafana: {
-			command: path.join(__dirname, "../../../grafana-mcp/mcp-grafana"),
+			command: process.env.GRAFANA_MCP_PATH ?? "",
 			args: [],
 			env: {
 				GRAFANA_URL: "https://yamatatsu.grafana.net/",

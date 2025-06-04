@@ -10,3 +10,5 @@ node_modules
 .cspellcache
 
 .DS_Store
+.mastra
+dist
