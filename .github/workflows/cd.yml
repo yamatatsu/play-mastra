@@ -32,7 +32,13 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install
+
       - run: pnpm -F app-frontend build:prd
+        env:
+          VITE_API_URL: ${{ secrets.API_URL }}
+          VITE_AWS_USER_POOLS_ID: ${{ secrets.AWS_USER_POOLS_ID }}
+          VITE_AWS_USER_POOLS_WEB_CLIENT_ID: ${{ secrets.AWS_USER_POOLS_WEB_CLIENT_ID }}
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
