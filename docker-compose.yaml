@@ -6,6 +6,7 @@ services:
     ports:
       - 4111:4111
     environment:
+      GRAFANA_URL: ${GRAFANA_URL}
       GRAFANA_API_KEY: ${GRAFANA_API_KEY}
       GRAFANA_MCP_PATH: /prod/packages/app-backend/grafana-mcp/linux-arm
       CORS_ORIGIN: ${CORS_ORIGIN}

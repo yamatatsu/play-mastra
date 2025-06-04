@@ -11,7 +11,7 @@ const mcpClient = new MCPClient({
 			command: process.env.GRAFANA_MCP_PATH ?? "",
 			args: [],
 			env: {
-				GRAFANA_URL: "https://yamatatsu.grafana.net/",
+				GRAFANA_URL: process.env.GRAFANA_URL ?? "",
 				GRAFANA_API_KEY: process.env.GRAFANA_API_KEY ?? "",
 			},
 		},
