@@ -17,6 +17,11 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g pnpm@^10.10.0
 
+# CA証明書のインストール
+# Grafana MCPがAPIを実行する際にbase imageが持ってる証明書では不十分であるため
+RUN apt-get update
+RUN apt-get install ca-certificates -y
+
 ####################
 # Build image
 
@@ -40,11 +45,6 @@ FROM base AS app-backend
 COPY --from=build /usr/src/app/node_modules /prod/node_modules
 COPY --from=build /usr/src/app/packages/app-backend /prod/packages/app-backend
 WORKDIR /prod/packages/app-backend
-
-# 証明書のインストール
-# Grafana MCPがAPIを実行する際にbase imageが持ってる証明書では不十分であるため
-RUN apt-get update
-RUN apt-get install ca-certificates -y
 
 EXPOSE 4111
 CMD [ "pnpm", "start" ]

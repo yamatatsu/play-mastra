@@ -1,0 +1,41 @@
+name: CD
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cd:
+    name: CD
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    timeout-minutes: 30
+
+    env:
+      TZ: Asia/Tokyo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: "arn:aws:iam::660782280015:role/play-mastra-github-deploy-role"
+          aws-region: ap-northeast-1
+
+      - run: pnpm -F cdk exec cdk deploy

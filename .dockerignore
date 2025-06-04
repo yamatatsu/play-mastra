@@ -8,6 +8,7 @@ node_modules
 dist
 
 packages/cdk
+packages/app-frontend
 packages/*/.env
 packages/*/.mastra
 packages/*/node_modules
