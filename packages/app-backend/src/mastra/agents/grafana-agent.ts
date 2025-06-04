@@ -1,9 +1,11 @@
 import { createAmazonBedrock } from "@ai-sdk/amazon-bedrock";
+import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import { Agent } from "@mastra/core/agent";
 import { grafanaMcpTools } from "../tools/grafana-mcp-tools";
 
 const bedrock = createAmazonBedrock({
 	region: "us-east-1",
+	credentialProvider: fromNodeProviderChain(),
 });
 const model = bedrock("us.anthropic.claude-sonnet-4-20250514-v1:0");
 
