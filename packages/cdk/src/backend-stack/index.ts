@@ -73,5 +73,58 @@ export class BackendStack extends cdk.Stack {
 				},
 			],
 		});
+
+		// /////////////
+		// App Runner
+
+		const service = new apprunner.Service(this, "Service", {
+			cpu: apprunner.Cpu.ONE_VCPU,
+			memory: apprunner.Memory.TWO_GB,
+			source: apprunner.Source.fromAsset({
+				asset: new assets.DockerImageAsset(this, "ImageAssets", {
+					directory: "../../",
+					platform: assets.Platform.LINUX_AMD64,
+				}),
+				imageConfiguration: {
+					port: 4111,
+					environmentVariables: {
+						CORS_ORIGIN: "http://localhost:5173,http://localhost:5174",
+						AWS_USER_POOLS_ID: userPool.userPoolId,
+						AWS_USER_POOLS_WEB_CLIENT_ID: userPoolClient.userPoolClientId,
+						GRAFANA_MCP_PATH:
+							"/prod/packages/app-backend/grafana-mcp/linux-amd",
+					},
+					environmentSecrets: {
+						GRAFANA_URL: apprunner.Secret.fromSsmParameter(
+							// NOTE: あらかじめ自前でssm parameterを作成しておく
+							// `aws ssm put-parameter --name /play-mastra/grafana-url --type SecureString --value xxx`
+							ssm.StringParameter.fromSecureStringParameterAttributes(
+								this,
+								"GrafanaUrl",
+								{ parameterName: "/play-mastra/grafana-url" },
+							),
+						),
+						GRAFANA_API_KEY: apprunner.Secret.fromSsmParameter(
+							// NOTE: あらかじめ自前でssm parameterを作成しておく
+							// `aws ssm put-parameter --name /play-mastra/grafana-api-key --type SecureString --value xxx`
+							ssm.StringParameter.fromSecureStringParameterAttributes(
+								this,
+								"GrafanaApiKey",
+								{ parameterName: "/play-mastra/grafana-api-key" },
+							),
+						),
+					},
+				},
+			}),
+		});
+		service.addToRolePolicy(
+			new iam.PolicyStatement({
+				actions: [
+					"bedrock:InvokeModel",
+					"bedrock:InvokeModelWithResponseStream",
+				],
+				resources: ["*"],
+			}),
+		);
 	}
 }
