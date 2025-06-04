@@ -54,7 +54,7 @@ export class BackendStack extends cdk.Stack {
 		// /////////////
 		// DynamoDB
 
-		new dynamodb.TableV2(this, "Table", {
+		const table = new dynamodb.TableV2(this, "Table", {
 			tableName: "mastra-storage-table",
 			partitionKey: { name: "pk", type: dynamodb.AttributeType.STRING },
 			sortKey: { name: "sk", type: dynamodb.AttributeType.STRING },
@@ -117,6 +117,7 @@ export class BackendStack extends cdk.Stack {
 				},
 			}),
 		});
+		table.grantReadWriteData(service);
 		service.addToRolePolicy(
 			new iam.PolicyStatement({
 				actions: [
