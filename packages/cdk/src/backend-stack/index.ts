@@ -103,7 +103,7 @@ export class BackendStack extends cdk.Stack {
 							ssm.StringParameter.fromSecureStringParameterAttributes(
 								this,
 								"GrafanaUrl",
-								{ parameterName: "/play-mastra/grafana-url" },
+								{ parameterName: "/play-mastra/grafana-url", version: 2 },
 							),
 						),
 						GRAFANA_API_KEY: apprunner.Secret.fromSsmParameter(
@@ -112,7 +112,7 @@ export class BackendStack extends cdk.Stack {
 							ssm.StringParameter.fromSecureStringParameterAttributes(
 								this,
 								"GrafanaApiKey",
-								{ parameterName: "/play-mastra/grafana-api-key" },
+								{ parameterName: "/play-mastra/grafana-api-key", version: 2 },
 							),
 						),
 					},
